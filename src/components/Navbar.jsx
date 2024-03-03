@@ -19,9 +19,9 @@ const Navbar = () => {
   return (
     <header className="w-full py-4 px-4 border border-neutral-500/0.5">
       <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <h1 className="text-lg font-medium">ShopCart</h1>
-          <span className="text-xs">Admin</span>
+        <div className="flex items-center gap-1">
+          <h1 className="text-xl font-medium">ShopCart</h1>
+          <span className="text-xs text-blue-900 font-bold">Admin</span>
         </div>
 
         <div className="flex gap-10 text-neutral-500 cursor-pointer text-base font-medium">

@@ -6,28 +6,29 @@ import Orders from "./components/Orders/Orders";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AddProducts from "./components/Products/AddProducts";
 import AddCategory from "./components/Category/AddCategory";
-import SignInPage from "./components/Sign-in";
+import SignInPage from "./components/sign-in";
 import SignUpPage from "./components/Sign-up";
 import { Toaster } from "react-hot-toast";
+import AppProvider from "./Context/AppContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Toaster />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/categories" element={<Category />} />
-        <Route path="/add-category" element={<AddCategory />} />
-
-        <Route path="/products" element={<Products />} />
-        <Route path="/add-products" element={<AddProducts />} />
-
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        <Toaster />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/categories" element={<Category />} />
+          <Route path="/add-category" element={<AddCategory />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/add-products" element={<AddProducts />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+        </Routes>
+      </BrowserRouter>
+    </AppProvider>
   );
 }
 

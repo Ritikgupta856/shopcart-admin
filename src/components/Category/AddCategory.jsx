@@ -30,7 +30,7 @@ const AddCategory = () => {
     try {
       let formData = new FormData();
       formData.append('category',category.image)
-      const response = await axios.post('http://localhost:8000/upload/category',formData)
+      const response = await axios.post( `${import.meta.env.VITE_SERVER_URL}/upload/category`,formData)
       
       console.log(response);
   
@@ -39,7 +39,7 @@ const AddCategory = () => {
         console.log(category)
 
         try {
-          const addcategoryResponse = await axios.post('http://localhost:8000/addcategory',category)
+          const addcategoryResponse = await axios.post( `${import.meta.env.VITE_SERVER_URL}/addcategory`,category)
 
           if (addcategoryResponse.data.success) {
             toast.success('Category added successfully')

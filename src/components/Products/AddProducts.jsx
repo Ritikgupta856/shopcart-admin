@@ -3,6 +3,9 @@ import Heading from "../heading";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const AddProducts = () => {
   const [categories, setCategories] = useState([]);
@@ -11,7 +14,7 @@ const AddProducts = () => {
     const fetchCategory = async () => {
       try {
         const categoryResponse = await axios.get(
-          "http://localhost:8000/allcategories"
+           `${import.meta.env.VITE_SERVER_URL}/allcategories`
         );
         setCategories(categoryResponse.data);
       } catch (error) {
@@ -56,7 +59,7 @@ const AddProducts = () => {
 
         try {
           const addProductResponse = await axios.post(
-            "http://localhost:8000/addproduct",
+            `${import.meta.env.VITE_SERVER_URL}/addproduct`,
             product
           );
 
@@ -83,13 +86,19 @@ const AddProducts = () => {
 
   return (
     <div className="py-4 pl-20 mb-10 mt-8">
-      <Heading title="Add Products" description="Introduce New Items to Your Collection" />
+      <Heading
+        title="Add Products"
+        description="Introduce New Items to Your Collection"
+      />
 
       <div className="flex flex-col w-200 mt-8 gap-8 ">
         <div className="flex gap-4 items-center">
-          <label className="font-medium">Product Title :</label>
-          <input
+          <Label htmlFor="name" className="font-medium">
+            Product Title :
+          </Label>
+          <Input
             type="text"
+            id="name"
             value={product.name}
             name="name"
             onChange={changeHandler}
@@ -98,19 +107,26 @@ const AddProducts = () => {
         </div>
 
         <div className="flex gap-4 items-center">
-          <label className="font-medium">Product Description :</label>
-          <input
-            type="text"
+          <Label htmlFor="description" className="font-medium">
+            Product Description :{" "}
+          </Label>
+
+          <Textarea
+            id="description"
             name="description"
             value={product.description}
             onChange={changeHandler}
-            className=" w-[50vw] h-[200px] py-2 px-2 outline-none border"
+            className="w-[600px] py-2 px-2 outline-none border"
           />
         </div>
 
         <div className="flex gap-4 items-center">
-          <label className="font-medium">Price :</label>
-          <input
+          <Label htmlFor="price" className="font-medium">
+            Price :
+          </Label>
+
+          <Input
+            id="price"
             type="number"
             name="price"
             value={product.price}
@@ -120,13 +136,25 @@ const AddProducts = () => {
         </div>
 
         <div className="flex gap-4 items-center">
-          <label className="font-medium">Product Image :</label>
-          <input type="file" onChange={changeHandler} name="image" />
+          <Label htmlFor="file" className="font-medium">
+            Product Image :
+          </Label>
+          <Input
+            id="file"
+            type="file"
+            name="image"
+            onChange={changeHandler}
+            className="w-100 py-2 px-2 outline-none border"
+          />
         </div>
 
         <div className="flex gap-4 items-center">
-          <label className="font-medium">Category:</label>
+          <Label htmlFor="category" className="font-medium">
+            Category:
+          </Label>
+
           <select
+            id="category"
             name="category"
             className="border"
             value={product.category}
@@ -142,9 +170,9 @@ const AddProducts = () => {
         </div>
 
         <div className="flex gap-4 items-center">
-
-        <Button variant="destructive" onClick={onSubmit}>Add Product</Button>
-         
+          <Button variant="destructive" onClick={onSubmit}>
+            Add Product
+          </Button>
         </div>
       </div>
     </div>

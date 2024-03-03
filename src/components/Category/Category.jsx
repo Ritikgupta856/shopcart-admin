@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Heading from "../heading";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,30 +12,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AppContext } from "@/src/Context/AppContext";
 
 const Category = () => {
   const navigate = useNavigate();
-  const [allcategories, setAllCategories] = useState([]);
-
-  useEffect(() => {
-    const getCategories  = async () => {
-      try {
-        const categoryResponse = await axios.get(
-          "http://localhost:8000/allcategories"
-        );
-        setAllCategories(categoryResponse.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getCategories();
-  }, []);
+  
+  const {categories} = useContext(AppContext);
 
   const removeCategory = async (id) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/removecategory",
+        `${import.meta.env.VITE_SERVER_URL}/removecategory`,
         { id }
       );
       console.log("Category removed successfully:", response.data);
@@ -48,7 +35,7 @@ const Category = () => {
     <div className="py-8 px-10">
       <div className="flex justify-between">
         <Heading
-          title={`Category (${allcategories.length})`}
+          title={`Category (${categories.length})`}
           description="Manage Category"
         />
         <Button variant="destructive" onClick={() => navigate("/add-category")}>
@@ -65,7 +52,7 @@ const Category = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allcategories.map((category, index) => (
+          {categories.map((category, index) => (
             <TableRow key={index}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell>
