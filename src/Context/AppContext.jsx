@@ -9,6 +9,8 @@ const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [totalRevenue, setTotalRevenue] = useState('0');
+
 
 
   useEffect(() => {
@@ -40,6 +42,33 @@ const AppProvider = ({ children }) => {
     getProducts();
   }, []);
 
+  useEffect(() => {
+    const getOrdersDetails = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/orders`);
+        setOrders(response.data.orders);
+        setTotalRevenue(response.data.totalRevenue)
+      } catch (error) {
+        console.error("Error fetching Orders details:", error);
+      }
+    };
+
+    getOrdersDetails();
+  }, []);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/users`);
+        setUsers(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    getUsers();
+  }, []);
+
 
 
   return (
@@ -47,6 +76,9 @@ const AppProvider = ({ children }) => {
       value={{
         categories,
         products,
+        users,
+        orders,
+        totalRevenue
       }}
     >
       {children}

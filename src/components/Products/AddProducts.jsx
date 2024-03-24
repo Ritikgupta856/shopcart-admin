@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Heading from "../heading";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -6,24 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { AppContext } from "@/src/Context/AppContext";
 
 const AddProducts = () => {
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    const fetchCategory = async () => {
-      try {
-        const categoryResponse = await axios.get(
-           `${import.meta.env.VITE_SERVER_URL}/allcategories`
-        );
-        setCategories(categoryResponse.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchCategory();
-  }, []);
+  const { categories } = useContext(AppContext);
 
   const [product, setProduct] = useState({
     name: "",
@@ -47,7 +33,7 @@ const AddProducts = () => {
       let formData = new FormData();
       formData.append("product", product.image);
       const response = await axios.post(
-        "http://localhost:8000/upload/product",
+        `${import.meta.env.VITE_SERVER_URL}/upload/product`,
         formData
       );
 
@@ -68,6 +54,7 @@ const AddProducts = () => {
             console.log("Product added successfully:", addProductResponse.data);
           }
         } catch (error) {
+          toast.error("Something went wrong");
           console.log(error);
         }
       }
@@ -82,7 +69,7 @@ const AddProducts = () => {
         category: "",
       });
     }
-  };
+  }
 
   return (
     <div className="py-4 pl-20 mb-10 mt-8">
@@ -102,7 +89,7 @@ const AddProducts = () => {
             value={product.name}
             name="name"
             onChange={changeHandler}
-            className="w-[50vw] py-2 px-2 outline-none border"
+            className="w-[50vw] py-2 px-2 outline-none border text-left"
           />
         </div>
 
@@ -116,7 +103,7 @@ const AddProducts = () => {
             name="description"
             value={product.description}
             onChange={changeHandler}
-            className="w-[600px] py-2 px-2 outline-none border"
+            className="w-[600px] py-2 px-2 outline-none border text-left"
           />
         </div>
 

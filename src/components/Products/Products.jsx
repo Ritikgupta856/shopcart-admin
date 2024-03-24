@@ -12,20 +12,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import AppContext from "@/src/Context/AppContext";
+import { AppContext } from "@/src/Context/AppContext";
+import toast from "react-hot-toast";
 
 
 const Products = () => {
 
-  const { products } = useContext(AppContext);
+  const {products} = useContext(AppContext);
 
 
   const removeProduct = async (id) => {
       try {
         const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/removeproduct`,{id});
+        toast.success("Product removed successfully")
         console.log("Product removed successfully:", response.data);
       } catch (error) {
-        console.error("Error removing Products:", error);
+        toast.error("Error removing Product")
+        console.error("Error removing Product:", error);
       }
     };
   
@@ -35,14 +38,14 @@ const Products = () => {
     <div className="py-8 px-10">
       <div className="flex justify-between">
         <Heading
-          title={`Products (${products? products.length : 0})`}
+          title={`Products (${products ? products.length : 0})`}
           description="Manage Products"
         />
 
         <Button variant="destructive" onClick={() => navigate("/add-products")}> + Add New</Button>
       </div>
 
-
+    {!products ? loading : (
       <Table className="mt-10">
         <TableHeader>
           <TableRow>
@@ -78,6 +81,7 @@ const Products = () => {
           ))}
         </TableBody>
       </Table>
+)}
    
     </div>
   );
