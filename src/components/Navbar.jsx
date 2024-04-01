@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         <Link to="/">
           <div className="flex items-center gap-1 cursor-pointer">
-            <h1 className="text-xl font-medium">ShopCart</h1>
+            <h1 className="text-xl font-bold ">ShopCart</h1>
             <span className="text-xs text-blue-900 font-bold">Admin</span>
           </div>
         </Link>
