@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import Heading from "../heading";
+import { useContext, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { AppContext } from "@/src/Context/AppContext";
+import Heading from "../Heading";
 
 const AddProducts = () => {
   const { categories } = useContext(AppContext);

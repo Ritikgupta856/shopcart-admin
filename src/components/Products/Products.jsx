@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState} from "react";
-import Heading from "../heading";
+import { useContext} from "react";
+import Heading from "../Heading";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MdOutlineClose } from "react-icons/md";

@@ -1,9 +1,9 @@
 
 import { useState } from "react";
-import Heading from "../heading";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
+import Heading from "../Heading";
 
 const AddCategory = () => {
   const [category,setCategory] = useState({

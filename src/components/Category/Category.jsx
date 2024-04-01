@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Heading from "../heading";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MdOutlineClose } from "react-icons/md";
@@ -13,6 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppContext } from "@/src/Context/AppContext";
+import Heading from "../Heading";
 
 const Category = () => {
   const navigate = useNavigate();
