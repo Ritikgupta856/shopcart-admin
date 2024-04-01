@@ -6,11 +6,11 @@ import Orders from "./components/Orders/Orders";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AddProducts from "./components/Products/AddProducts";
 import AddCategory from "./components/Category/AddCategory";
-import SignInPage from "./components/sign-in";
-import SignUpPage from "./components/sign-up";
 import { Toaster } from "react-hot-toast";
 import AppProvider from "./Context/AppContext";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
+import SignInPage from "./components/Sign-in";
+import SignUpPage from "./components/Sign-up";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
