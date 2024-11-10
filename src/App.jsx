@@ -34,7 +34,7 @@ function App() {
           <SignedOut>
             <Routes>
               <Route path="/sign-in" element={<SignInPage />} />
-              <Route path="/sign-up" element={<SignUpPage />} />
+              {/* <Route path="/sign-up" element={<SignUpPage />} /> */}
               <Route path="*" element={<Navigate to="/sign-in" replace />} />
             </Routes>
           </SignedOut>

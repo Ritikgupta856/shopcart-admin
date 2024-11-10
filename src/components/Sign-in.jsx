@@ -1,9 +1,19 @@
-import { SignIn } from "@clerk/clerk-react"
- 
+import { SignIn } from "@clerk/clerk-react";
+
 export default function SignInPage() {
-  return(
+  return (
     <div className="h-screen flex items-center justify-center">
-        <SignIn afterSignInUrl="/"/>
+      <SignIn 
+        path="/sign-in"
+        afterSignInUrl="/"
+        routing="path"
+        appearance={{
+          elements: {
+            footerAction: "hidden",
+            footer: "hidden"
+          }
+        }}
+      />
     </div>
   );
 }
