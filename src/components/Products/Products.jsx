@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { AppContext } from "@/src/Context/AppContext";
+import { AppContext } from "@/Context/AppContext";
 import toast from "react-hot-toast";
 
 
@@ -23,7 +23,7 @@ const Products = () => {
 
   const removeProduct = async (id) => {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/removeproduct`,{id});
+        const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/removeproduct`,{id});
         toast.success("Product removed successfully")
         console.log("Product removed successfully:", response.data);
       } catch (error) {

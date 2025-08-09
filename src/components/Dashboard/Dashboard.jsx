@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Heading from "../Heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AppContext } from "@/src/Context/AppContext";
+import { AppContext } from "@/Context/AppContext";
 import {
   FaRupeeSign,
   FaShoppingCart,

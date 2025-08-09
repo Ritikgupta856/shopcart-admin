@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Heading from "../Heading";
-import { AppContext } from "@/src/Context/AppContext";
+import { AppContext } from "@/Context/AppContext";
 
 import {
   Table,

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { AppContext } from "@/src/Context/AppContext";
+import { AppContext } from "@/Context/AppContext";
 import Heading from "../Heading";
 
 const AddProducts = () => {
@@ -33,7 +33,7 @@ const AddProducts = () => {
       let formData = new FormData();
       formData.append("product", product.image);
       const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/upload/product`,
+        `${import.meta.env.VITE_SERVER_URL}/api/upload/product`,
         formData
       );
 
@@ -45,7 +45,7 @@ const AddProducts = () => {
 
         try {
           const addProductResponse = await axios.post(
-            `${import.meta.env.VITE_SERVER_URL}/addproduct`,
+            `${import.meta.env.VITE_SERVER_URL}/api/addproduct`,
             product
           );
 

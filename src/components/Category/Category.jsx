@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { AppContext } from "@/src/Context/AppContext";
+import { AppContext } from "@/Context/AppContext";
 import Heading from "../Heading";
 
 const Category = () => {
@@ -22,7 +22,7 @@ const Category = () => {
   const removeCategory = async (id) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/removecategory`,
+        `${import.meta.env.VITE_SERVER_URL}/api/removecategory`,
         { id }
       );
       console.log("Category removed successfully:", response.data);

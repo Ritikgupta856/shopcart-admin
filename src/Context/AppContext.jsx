@@ -17,7 +17,7 @@ const AppProvider = ({ children }) => {
     const getCategories  = async () => {
       try {
         const categoryResponse = await axios.get(
-          `${import.meta.env.VITE_SERVER_URL}/allcategories`
+          `${import.meta.env.VITE_SERVER_URL}/api/allcategories`
         );
         setCategories(categoryResponse.data);
       } catch (error) {
@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/allproducts`);
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/allproducts`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -59,7 +59,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/users`);
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/users`);
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
